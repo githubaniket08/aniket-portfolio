@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Libre_Baskerville, Archivo } from "next/font/google";
+import { Libre_Baskerville, Archivo, Josefin_Sans } from "next/font/google";
 import BackgroundCanvas from "@/components/background-canvas";
 import "./globals.css";
 
@@ -14,6 +14,12 @@ const libreBaskerville = Libre_Baskerville({
 const archivo = Archivo({
   subsets: ["latin"],
   variable: "--font-body",
+  display: "swap",
+});
+
+const josefinSans = Josefin_Sans({
+  subsets: ["latin"],
+  variable: "--font-josefin",
   display: "swap",
 });
 
@@ -53,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth bg-[#070410]">
       <body
-        className={`${libreBaskerville.variable} ${archivo.variable} font-body text-foreground antialiased min-h-screen flex flex-col relative selection:bg-accent selection:text-foreground`}
+        className={`${libreBaskerville.variable} ${archivo.variable} ${josefinSans.variable} font-body text-foreground antialiased min-h-screen flex flex-col relative selection:bg-accent selection:text-foreground`}
       >
         {/* Persistent Site-wide Ferrofluid WebGL Background Layer */}
         <BackgroundCanvas />

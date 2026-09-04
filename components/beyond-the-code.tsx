@@ -75,7 +75,7 @@ export default function BeyondTheCode() {
           <h2 className="h-section text-[clamp(1.75rem,4vw,3rem)]">
             Beyond The Code
           </h2>
-          <p className="text-subheading mt-3 max-w-xl">
+          <p className="josefin-sans-1 text-subheading mt-3 max-w-xl">
             Leadership, creative pursuits, and meaningful contributions alongside technical work.
           </p>
         </div>
@@ -85,7 +85,7 @@ export default function BeyondTheCode() {
           <div>
             <div className="flex items-center gap-3 mb-8">
               <Briefcase className="w-4 h-4 text-accent" />
-              <span className="font-eyebrow">Experience</span>
+              <span className="josefin-sans-2 font-eyebrow">Experience</span>
               <div className="flex-1 h-px bg-border/60" />
             </div>
 
@@ -115,11 +115,11 @@ export default function BeyondTheCode() {
                         <h3 className="h-card text-base sm:text-lg">
                           {item.role}
                         </h3>
-                        <span className="font-eyebrow whitespace-nowrap">
+                        <span className="josefin-sans-2 font-eyebrow whitespace-nowrap">
                           {item.period}
                         </span>
                       </div>
-                      <p className="text-subheading text-sm sm:text-[0.95rem]">
+                      <p className="josefin-sans-1 text-subheading text-sm sm:text-[0.95rem]">
                         {item.description}
                       </p>
                     </div>
@@ -133,7 +133,7 @@ export default function BeyondTheCode() {
           <div>
             <div className="flex items-center gap-3 mb-8">
               <Medal className="w-4 h-4 text-accent" />
-              <span className="font-eyebrow">Extracurricular Activities</span>
+              <span className="josefin-sans-2 font-eyebrow">Extracurricular Activities</span>
               <div className="flex-1 h-px bg-border/60" />
             </div>
 
@@ -163,11 +163,11 @@ export default function BeyondTheCode() {
                         <h3 className="h-card text-base sm:text-lg">
                           {item.role}
                         </h3>
-                        <span className="font-eyebrow whitespace-nowrap">
+                        <span className="josefin-sans-2 font-eyebrow whitespace-nowrap">
                           {item.period}
                         </span>
                       </div>
-                      <p className="text-subheading text-sm sm:text-[0.95rem]">
+                      <p className="josefin-sans-1 text-subheading text-sm sm:text-[0.95rem]">
                         {item.description}
                       </p>
                     </div>

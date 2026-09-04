@@ -81,13 +81,13 @@ export default function ProjectsGrid() {
       <div className="section-container">
         {/* Section Intro Heading */}
         <div className="max-w-2xl mb-16 md:mb-24">
-          <span className="inline-block text-[11px] font-eyebrow uppercase tracking-[0.22em] text-accent-soft mb-3">
+          <span className="josefin-sans-2 inline-block text-[11px] font-eyebrow uppercase tracking-[0.22em] text-accent-soft mb-3">
             FEATURED WORK
           </span>
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground">
             Projects
           </h2>
-          <p className="text-sm sm:text-base text-muted font-body font-light mt-3.5 leading-relaxed">
+          <p className="josefin-sans-1 text-sm sm:text-base text-muted font-body font-light mt-3.5 leading-relaxed">
             Selected research, machine learning, signal processing, and computational work.
           </p>
         </div>
@@ -123,17 +123,17 @@ export default function ProjectsGrid() {
                         {project.number}
                       </span>
                       <span className="h-3 w-px bg-white/10" />
-                      <span className="px-2.5 py-1 rounded-md border border-white/[0.12] bg-[#090514]/80 backdrop-blur-md font-body text-[10px] font-medium uppercase tracking-widest text-accent-soft">
+                      <span className="josefin-sans-2 px-2.5 py-1 rounded-md border border-white/[0.12] bg-[#090514]/80 backdrop-blur-md font-body text-[10px] font-medium uppercase tracking-widest text-accent-soft">
                         Case Study
                       </span>
                       <span className="h-3 w-px bg-white/10" />
-                      <span className="text-[10.5px] font-eyebrow uppercase tracking-[0.18em] text-muted/90">
+                      <span className="josefin-sans-2 text-[10.5px] font-eyebrow uppercase tracking-[0.18em] text-muted/90">
                         {project.category}
                       </span>
                     </div>
 
                     {/* Project Title (Serif Display Typography) */}
-                    <h3 className="font-heading text-2xl sm:text-3xl md:text-[2.1rem] font-bold text-foreground leading-tight tracking-tight mb-4 group-hover:text-accent-soft transition-colors duration-200">
+                    <h3 className="josefin-sans-1 font-heading text-2xl sm:text-3xl md:text-[2.1rem] font-bold text-foreground leading-tight tracking-tight mb-4 group-hover:text-accent-soft transition-colors duration-200">
                       <a
                         href={project.githubUrl}
                         target="_blank"
@@ -145,7 +145,7 @@ export default function ProjectsGrid() {
                     </h3>
 
                     {/* Exact Project Description */}
-                    <p className="text-sm sm:text-[15px] font-body font-light text-muted leading-relaxed mb-6">
+                    <p className="josefin-sans-1 text-sm sm:text-[15px] font-body font-light text-muted leading-relaxed mb-6">
                       {project.description}
                     </p>
 
@@ -247,16 +247,16 @@ export default function ProjectsGrid() {
                               {project.number}
                             </span>
                             <span className="h-3 w-px bg-white/10" />
-                            <span className="px-2.5 py-1 rounded-md border border-white/[0.12] bg-[#090514]/80 backdrop-blur-md font-body text-[10px] font-medium uppercase tracking-widest text-accent-soft">
+                            <span className="josefin-sans-2 px-2.5 py-1 rounded-md border border-white/[0.12] bg-[#090514]/80 backdrop-blur-md font-body text-[10px] font-medium uppercase tracking-widest text-accent-soft">
                               Case Study
                             </span>
                             <span className="h-3 w-px bg-white/10" />
-                            <span className="text-[10.5px] font-eyebrow uppercase tracking-[0.18em] text-muted/90">
+                            <span className="josefin-sans-2 text-[10.5px] font-eyebrow uppercase tracking-[0.18em] text-muted/90">
                               {project.category}
                             </span>
                           </div>
 
-                          <h3 className="font-heading text-2xl sm:text-3xl md:text-[2.1rem] font-bold text-foreground leading-tight tracking-tight mb-4 group-hover:text-accent-soft transition-colors duration-200">
+                          <h3 className="josefin-sans-1 font-heading text-2xl sm:text-3xl md:text-[2.1rem] font-bold text-foreground leading-tight tracking-tight mb-4 group-hover:text-accent-soft transition-colors duration-200">
                             <a
                               href={project.githubUrl}
                               target="_blank"
@@ -267,7 +267,7 @@ export default function ProjectsGrid() {
                             </a>
                           </h3>
 
-                          <p className="text-sm sm:text-[15px] font-body font-light text-muted leading-relaxed mb-6">
+                          <p className="josefin-sans-1 text-sm sm:text-[15px] font-body font-light text-muted leading-relaxed mb-6">
                             {project.description}
                           </p>
 

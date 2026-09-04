@@ -51,7 +51,7 @@ export default function Contact() {
         {/* Top Eyebrow */}
         <div className="flex items-center gap-3 font-eyebrow mb-8">
           <span className="h-px w-8 bg-accent-soft" />
-          <span>CONTACT &amp; COLLABORATION</span>
+          <span className="josefin-sans-2">CONTACT &amp; COLLABORATION</span>
         </div>
 
         {/* Massive Editorial Headline: “Let’s Build Something.” */}
@@ -59,7 +59,7 @@ export default function Contact() {
           <h2 className="font-heading font-bold text-[clamp(3.2rem,8.5vw,7.2rem)] leading-[0.95] tracking-[-0.03em] text-foreground max-w-[1080px]">
             Let&apos;s Build Something.
           </h2>
-          <p className="text-subheading mt-5 max-w-[640px] text-base sm:text-lg">
+          <p className="josefin-sans-1 text-subheading mt-5 max-w-[640px] text-base sm:text-lg">
             Open for research collaborations, engineering opportunities, and ambitious technical projects.
           </p>
         </div>
@@ -68,7 +68,7 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 pt-10 border-t border-border/40">
           {/* Primary Column: Direct Inquiries & Single Ghost CTA (8 cols) */}
           <div className="lg:col-span-8 flex flex-col items-start gap-5">
-            <span className="font-label text-accent-soft tracking-[0.2em]">
+            <span className="josefin-sans-2 font-label text-accent-soft tracking-[0.2em]">
               DIRECT INQUIRIES
             </span>
 
@@ -104,14 +104,14 @@ export default function Contact() {
 
           {/* Secondary Column: Asymmetric Location & Metadata (4 cols) */}
           <div className="lg:col-span-4 flex flex-col justify-start gap-2 lg:pl-6 lg:border-l lg:border-border/30">
-            <span className="font-label text-muted/70 tracking-[0.2em]">
+            <span className="josefin-sans-2 font-label text-muted/70 tracking-[0.2em]">
               LOCATION / BASE
             </span>
             <div className="flex items-center gap-2 text-foreground/90 text-xl font-body font-normal">
               <MapPin className="w-4 h-4 text-accent-soft/80 flex-shrink-0" />
-              <span>Belagavi, Karnataka, India</span>
+              <span className="josefin-sans-1">Belagavi, Karnataka, India</span>
             </div>
-            <p className="text-sm text-muted font-body font-light mt-1">
+            <p className="josefin-sans-1 text-sm text-muted font-body font-light mt-1">
               Available for remote engagements and on-site roles worldwide.
             </p>
           </div>
@@ -120,7 +120,7 @@ export default function Contact() {
         {/* Social Links Row with Staggered Scroll-in Entrance */}
         <div className="mt-14 pt-8 border-t border-border/30 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-            <span className="font-label text-muted/80 tracking-[0.2em]">
+            <span className="josefin-sans-2 font-label text-muted/80 tracking-[0.2em]">
               NETWORK &amp; PROFILES
             </span>
 

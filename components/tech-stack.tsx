@@ -222,13 +222,13 @@ export default function TechStack() {
       <div className="relative section-container z-10">
         {/* Large Centered Heading + Supporting Text */}
         <div className="text-center max-w-2xl mx-auto mb-8 md:mb-10">
-          <span className="inline-block text-[11px] font-eyebrow uppercase tracking-[0.22em] text-accent-soft mb-3">
+          <span className="josefin-sans-2 inline-block text-[11px] font-eyebrow uppercase tracking-[0.22em] text-accent-soft mb-3">
             TECHNICAL ARCHITECTURE
           </span>
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold tracking-tight text-foreground">
             Tech Stack
           </h2>
-          <p className="text-sm sm:text-base text-muted font-body font-light mt-4 leading-relaxed max-w-lg mx-auto">
+          <p className="josefin-sans-1 text-sm sm:text-base text-muted font-body font-light mt-4 leading-relaxed max-w-lg mx-auto">
             Technologies I work with.
           </p>
         </div>
@@ -261,7 +261,7 @@ export default function TechStack() {
                   </span>
                 </div>
 
-                <p className="text-xs text-muted/80 font-body font-light mb-5 leading-relaxed">
+                <p className="josefin-sans-1 text-xs text-muted/80 font-body font-light mb-5 leading-relaxed">
                   {category.description}
                 </p>
 

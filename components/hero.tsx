@@ -46,11 +46,11 @@ export default function Hero() {
             <div className="mb-5">
               <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full border border-border/80 bg-[var(--surface-soft)] backdrop-blur-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#A78BFA] shadow-[0_0_10px_rgba(167,139,250,0.9)]" />
-                <span className="text-[10px] font-eyebrow uppercase tracking-[0.22em] text-foreground">
+                <span className="josefin-sans-2 text-[10px] font-eyebrow uppercase tracking-[0.22em] text-foreground">
                   AVAILABLE
                 </span>
                 <span className="h-2.5 w-px bg-border/80" />
-                <span className="text-xs font-body text-muted font-normal tracking-normal whitespace-nowrap">
+                <span className="josefin-sans-1 text-xs font-body text-muted font-normal tracking-normal whitespace-nowrap">
                   For Research &amp; Project Work
                 </span>
               </div>
@@ -81,11 +81,11 @@ export default function Hero() {
             {/* 3. Small uppercase descriptor with generous letter spacing */}
             <div className="flex items-center gap-3 text-[11px] font-eyebrow uppercase tracking-[0.22em] text-accent-soft mt-4">
               <span className="h-px w-8 bg-accent-soft" />
-              <span>RESEARCHER / INTELLIGENT SYSTEMS / COMPUTATIONAL BUILDER</span>
+              <span className="josefin-sans-2">RESEARCHER / INTELLIGENT SYSTEMS / COMPUTATIONAL BUILDER</span>
             </div>
 
             {/* 4. Refined editorial summary */}
-            <p className="text-base sm:text-[1.0625rem] text-[var(--foreground-soft)] font-body font-light max-w-lg leading-relaxed mt-6">
+            <p className="josefin-sans-1 text-base sm:text-[1.0625rem] text-[var(--foreground-soft)] font-body font-light max-w-lg leading-relaxed mt-6">
               Computer Science (Artificial Intelligence) undergraduate at KLE Technological University, designing with machine learning, RF/SDR, IoT systems, and bioinformatics through applied research and projects.
             </p>
 
@@ -202,16 +202,16 @@ export default function Hero() {
           className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 max-w-[1050px] mt-8"
         >
           <div className="md:col-span-5 flex flex-col justify-start gap-4">
-            <p className="text-base sm:text-lg font-body font-medium leading-relaxed text-foreground border-l-2 border-accent pl-4 py-1">
+            <p className="josefin-sans-1 text-base sm:text-lg font-body font-medium leading-relaxed text-foreground border-l-2 border-accent pl-4 py-1">
               Building end-to-end systems across machine learning, embedded systems, and computational biology research.
             </p>
           </div>
 
           <div className="md:col-span-7 flex flex-col gap-4 text-muted font-body font-light text-sm sm:text-base leading-relaxed">
-            <p>
+            <p className="josefin-sans-1">
               My work ranges from Wi-Fi RSSI fingerprinting for indoor localization to multi-scale digital twin simulations, machine learning, and edge-optimized medical imaging pipelines.
             </p>
-            <p>
+            <p className="josefin-sans-1">
               Whether training neural models on RF signals, developing ML systems, simulating cortical sleep dynamics with VCell, or integrating microcontrollers with biometric sensors, I focus on taking ideas from research to complete, reliable, end-to-end systems that work in the real world.
             </p>
           </div>

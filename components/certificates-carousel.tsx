@@ -75,6 +75,9 @@ export default function CertificatesCarousel({
   certificates,
 }: CertificatesCarouselProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const lastTriggerRef = useRef<HTMLElement | null>(null);
   const [selectedCert, setSelectedCert] = useState<CertificateItem | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -140,26 +143,54 @@ export default function CertificatesCarousel({
     setIsDragging(false);
   };
 
-  const handleCardClick = (cert: CertificateItem) => {
+  const handleCardClick = (cert: CertificateItem, trigger: HTMLElement) => {
     if (hasMoved) return;
+    lastTriggerRef.current = trigger;
     setSelectedCert(cert);
   };
 
   useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSelectedCert(null);
-    };
-
     if (selectedCert) {
       document.body.style.overflow = "hidden";
-      window.addEventListener("keydown", handleKeyDown);
+      const frame = requestAnimationFrame(() => closeButtonRef.current?.focus());
+      return () => {
+        cancelAnimationFrame(frame);
+        document.body.style.overflow = "unset";
+        lastTriggerRef.current?.focus();
+      };
     }
 
-    return () => {
-      document.body.style.overflow = "unset";
-      window.removeEventListener("keydown", handleKeyDown);
-    };
+    document.body.style.overflow = "unset";
+    lastTriggerRef.current?.focus();
+    return undefined;
   }, [selectedCert]);
+
+  const handleModalKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      setSelectedCert(null);
+      return;
+    }
+
+    if (event.key !== "Tab" || !modalRef.current) return;
+
+    const focusableElements = Array.from(
+      modalRef.current.querySelectorAll<HTMLElement>(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      )
+    ).filter((element) => !element.hasAttribute("disabled"));
+    if (focusableElements.length === 0) return;
+
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+    if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    } else if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
+    }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -179,7 +210,7 @@ export default function CertificatesCarousel({
       <div className="flex items-center justify-between mb-6 px-1">
         <div className="text-xs font-eyebrow text-muted-foreground flex items-center gap-2">
           <span className="inline-block w-2 h-2 rounded-full bg-accent-soft" />
-          <span className="uppercase tracking-[0.18em]">
+          <span className="josefin-sans-2 uppercase tracking-[0.18em]">
             {certificates.length} Verified Credentials
           </span>
         </div>
@@ -231,15 +262,8 @@ export default function CertificatesCarousel({
               viewport={{ once: true, amount: 0.1 }}
               transition={{ delay: Math.min(idx * 0.05, 0.4) }}
               whileHover={{ y: -6 }}
-              onClick={() => handleCardClick(cert)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  setSelectedCert(cert);
-                }
-              }}
+              onClick={(event) => handleCardClick(cert, event.currentTarget)}
+              tabIndex={-1}
               className="group flex-shrink-0 w-[270px] sm:w-[310px] snap-start flex flex-col rounded-2xl surface-glass hover:border-accent/80 transition-all duration-300 overflow-hidden cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent shadow-lg"
             >
               {/* Thumbnail Area */}
@@ -292,6 +316,7 @@ export default function CertificatesCarousel({
                     className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.12] bg-[var(--surface-soft)] text-xs font-body font-medium text-foreground/90 group-hover:text-foreground group-hover:border-accent transition-colors"
                     onClick={(event) => {
                       event.stopPropagation();
+                      lastTriggerRef.current = event.currentTarget;
                       setSelectedCert(cert);
                     }}
                     >
@@ -311,13 +336,15 @@ export default function CertificatesCarousel({
             className="fixed inset-0 z-50 flex items-center justify-center bg-[#050308]/90 p-4 backdrop-blur-sm sm:p-8"
             role="dialog"
             aria-modal="true"
-            aria-label={selectedCert.title}
+            aria-labelledby="certificate-dialog-title"
+            onKeyDown={handleModalKeyDown}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedCert(null)}
           >
             <motion.div
+              ref={modalRef}
               className="relative flex max-h-[92vh] w-full max-w-4xl flex-col items-center bg-transparent"
               initial={{ scale: 0.94, y: 16 }}
               animate={{ scale: 1, y: 0 }}
@@ -328,12 +355,16 @@ export default function CertificatesCarousel({
                 <span className="text-[10px] font-eyebrow uppercase tracking-[0.2em] text-accent-soft">
                   {selectedCert.issuer}
                 </span>
-                <h2 className="mt-1 font-heading text-lg font-bold text-foreground sm:text-xl">
+                <h2
+                  id="certificate-dialog-title"
+                  className="mt-1 font-heading text-lg font-bold text-foreground sm:text-xl"
+                >
                   {selectedCert.title}
                 </h2>
               </div>
               <button
                 type="button"
+                ref={closeButtonRef}
                 onClick={() => setSelectedCert(null)}
                 aria-label="Close certificate"
                 className="absolute right-4 top-4 z-10 rounded-full border border-white/20 bg-[#0b0712]/90 p-2.5 text-white shadow-lg transition-colors hover:border-accent hover:bg-[#160d24]"

@@ -188,7 +188,7 @@ export default function Certificates() {
           <h2 className="h-section text-[clamp(1.75rem,4vw,3rem)]">
             Certifications &amp; Credentials
           </h2>
-          <p className="text-subheading mt-2.5 max-w-xl">
+          <p className="josefin-sans-1 text-subheading mt-2.5 max-w-xl">
             Verified certifications, academic credentials, and technical achievements.
           </p>
         </div>
