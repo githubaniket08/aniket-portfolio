@@ -1,0 +1,279 @@
+@import "tailwindcss";
+
+:root {
+  --background: #070410;
+  --foreground: #EDE8F6;
+  --foreground-soft: #D9D2EA;
+  --muted: #9E94B5;
+  --accent: #8B5CF6;
+  --accent-soft: #B9A6F0;
+  --border: rgba(179, 157, 230, 0.13);
+  --border-strong: rgba(179, 157, 230, 0.22);
+  --surface-glass: rgba(18, 11, 36, 0.62);
+  --surface-elevated: rgba(24, 15, 48, 0.74);
+  --surface-soft: rgba(22, 14, 44, 0.4);
+  --card-bg: var(--surface-glass);
+  --ink: #0C0620;
+  --shadow-violet: 0 10px 40px -12px rgba(139, 92, 246, 0.28);
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted);
+  --color-border: var(--border);
+  --color-card: var(--surface-glass);
+  --color-card-bg: var(--surface-glass);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-ink: var(--ink);
+  --font-serif: var(--font-heading), "Libre Baskerville", Georgia, serif;
+  --font-sans: var(--font-body), "Archivo", system-ui, -apple-system, sans-serif;
+  --font-heading: var(--font-heading), "Libre Baskerville", Georgia, serif;
+  --font-body: var(--font-body), "Archivo", system-ui, -apple-system, sans-serif;
+}
+
+/* Custom resets & smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  background-color: #070410;
+  color: var(--foreground);
+}
+
+body {
+  font-family: var(--font-body), "Archivo", system-ui, -apple-system, sans-serif;
+  background-color: transparent;
+  color: var(--foreground);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent);
+  color: #FFFFFF;
+}
+
+/* ---------- TYPOGRAPHY SYSTEM — COHERENT HIERARCHY ---------- */
+/* Primary heading family (Libre Baskerville, serif) */
+.font-heading {
+  font-family: var(--font-heading), "Libre Baskerville", Georgia, serif;
+  font-feature-settings: "ss01", "liga", "calt";
+}
+
+/* Large display / main headings */
+.h-display {
+  font-family: var(--font-heading), "Libre Baskerville", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+
+/* Section headings (used consistently across page) */
+.h-section {
+  font-family: var(--font-heading), "Libre Baskerville", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--foreground);
+}
+
+/* Card / sub-section headings */
+.h-card {
+  font-family: var(--font-heading), "Libre Baskerville", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: var(--foreground);
+}
+
+/* Body / supporting text family (Archivo, sans-serif) */
+.font-body {
+  font-family: var(--font-body), "Archivo", system-ui, -apple-system, sans-serif;
+}
+
+/* Section subheading / descriptions (replaces font-eyebrow) */
+.text-subheading {
+  font-family: var(--font-body), "Archivo", system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+
+/* Standard body copy */
+.text-body {
+  font-family: var(--font-body), "Archivo", system-ui, -apple-system, sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* Eyebrow / micro-labels: non-italic, sans, uppercase, spacing-driven hierarchy */
+.font-eyebrow {
+  font-family: var(--font-body), "Archivo", system-ui, -apple-system, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: var(--accent-soft);
+}
+
+/* Small uppercase labels for metadata / tags / chips */
+.font-label {
+  font-family: var(--font-body), "Archivo", system-ui, -apple-system, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ---------- SURFACE / GLASS UTILITIES — SELECTIVE USE ---------- */
+.surface-glass {
+  background: var(--surface-glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+}
+
+.surface-elevated {
+  background: var(--surface-elevated);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border-strong);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-violet);
+}
+
+.surface-soft {
+  background: var(--surface-soft);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+}
+
+/* Shared hover: subtle lift + accent border (apply with group-hover where needed) */
+.surface-hover {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+.surface-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(139, 92, 246, 0.55);
+  box-shadow: 0 22px 50px -22px rgba(139, 92, 246, 0.38);
+}
+
+/* Section container (keeps children aligned with site max-width) */
+.section-container {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.section-rule {
+  position: relative;
+}
+
+.section-rule::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: max(1.5rem, calc((100vw - 1100px) / 2));
+  width: 4rem;
+  height: 2px;
+  background: var(--accent);
+}
+
+.reveal-line {
+  overflow: hidden;
+}
+
+.reveal-line > * {
+  animation: reveal-line 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+@keyframes reveal-line {
+  from { transform: translateY(110%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+@keyframes profile-orb-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.55; }
+  50% { transform: translate(8px, -10px) scale(1.05); opacity: 0.75; }
+}
+
+@keyframes profile-orb-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+  50% { transform: translate(-6px, 8px) scale(1.04); opacity: 0.6; }
+}
+
+@keyframes profile-glow-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 0.95; transform: scale(1.03); }
+}
+
+@keyframes profile-frame-drift {
+  0%, 100% { transform: translate(3px, 2px); opacity: 0.55; }
+  33% { transform: translate(-2px, 4px); opacity: 0.45; }
+  66% { transform: translate(4px, -3px); opacity: 0.6; }
+}
+
+@keyframes profile-border-trace {
+  0% { stroke-dashoffset: 800; opacity: 0; }
+  20% { opacity: 0.6; }
+  100% { stroke-dashoffset: 0; opacity: 0.6; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Custom focus states for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* Custom scrollbar styling for deep violet/black theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070410;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(179, 157, 230, 0.18);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
