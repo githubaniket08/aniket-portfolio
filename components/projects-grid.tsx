@@ -195,6 +195,7 @@ export default function ProjectsGrid() {
                           src={project.image}
                           alt={project.title}
                           fill
+                          loading="eager"
                           sizes="(max-width: 1024px) 100vw, 55vw"
                           className="object-cover object-top transition-transform duration-500 ease-out group-hover/img:scale-[1.03]"
                         />
@@ -315,6 +316,7 @@ export default function ProjectsGrid() {
                                 src={project.image}
                                 alt={project.title}
                                 fill
+                                loading="eager"
                                 sizes="(max-width: 1024px) 100vw, 55vw"
                                 className="object-cover object-top transition-transform duration-500 ease-out group-hover/img:scale-[1.03]"
                               />

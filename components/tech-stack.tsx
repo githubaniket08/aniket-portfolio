@@ -14,7 +14,6 @@ import {
   HeartPulse,
   Navigation,
   Gamepad2,
-  Smartphone,
   Code2,
   Server,
 } from "lucide-react";
@@ -196,11 +195,6 @@ export default function TechStack() {
         {
           name: "React Native",
           icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-        },
-        {
-          name: "Expo",
-          lucideIcon: Smartphone,
-          accentColor: "#8B5CF6",
         },
         {
           name: "Spring Boot",

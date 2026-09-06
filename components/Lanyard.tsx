@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 "use client";
 
-import { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import { memo, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, extend, useFrame } from "@react-three/fiber";
 import { useGLTF, useTexture, Environment, Lightformer } from "@react-three/drei";
 import {
@@ -20,13 +20,6 @@ extend({ MeshLineGeometry, MeshLineMaterial });
 
 const CARD_GLB = "/card.glb";
 const LANYARD_PNG = "/lanyard.png";
-
-try {
-  useGLTF.preload(CARD_GLB);
-  useTexture.preload(LANYARD_PNG);
-} catch (e) {
-  // Preload catch
-}
 
 // 1x1 transparent pixel
 const BLANK_PIXEL =
@@ -47,7 +40,7 @@ export interface LanyardProps {
   lanyardWidth?: number;
 }
 
-export default function Lanyard({
+const Lanyard = memo(function Lanyard({
   position = [0, 0, 13],
   gravity = [0, -40, 0],
   fov = 13,
@@ -129,7 +122,9 @@ export default function Lanyard({
       </Canvas>
     </div>
   );
-}
+});
+
+export default Lanyard;
 
 interface BandProps {
   maxSpeed?: number;

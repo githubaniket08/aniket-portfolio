@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
 import WarpText from "./WarpText";
 
@@ -15,6 +16,25 @@ const Lanyard = dynamic(() => import("./Lanyard"), {
 });
 
 export default function Hero() {
+  const [loadLanyard, setLoadLanyard] = useState(false);
+
+  useEffect(() => {
+    let timeoutId: number | undefined;
+    let idleCallbackId: number | undefined;
+    const load = () => setLoadLanyard(true);
+
+    if (typeof window.requestIdleCallback === "function") {
+      idleCallbackId = window.requestIdleCallback(load, { timeout: 120 });
+    } else {
+      timeoutId = window.setTimeout(load, 60);
+    }
+
+    return () => {
+      if (idleCallbackId !== undefined) window.cancelIdleCallback(idleCallbackId);
+      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+    };
+  }, []);
+
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -86,7 +106,7 @@ export default function Hero() {
 
             {/* 4. Refined editorial summary */}
             <p className="josefin-sans-1 text-base sm:text-[1.0625rem] text-[var(--foreground-soft)] font-body font-light max-w-lg leading-relaxed mt-6">
-              Computer Science (Artificial Intelligence) undergraduate at KLE Technological University, designing with machine learning, RF/SDR, IoT systems, and bioinformatics through applied research and projects.
+              Computer Science (Artificial Intelligence) undergraduate at KLE Technological University, working across machine learning, RF/SDR, embedded systems, and computational biology through applied research and projects.
             </p>
 
             {/* 5. Minimal Ghost/Outline Action Buttons */}
@@ -152,15 +172,21 @@ export default function Hero() {
                 paddingTop: 0,
               }}
             >
-              <Lanyard
-                position={[0, 0, 22]}
-                gravity={[0, -40, 0]}
-                fov={20}
-                frontImage="/profile-picture/aniket-card-front4.png"
-                backImage="/profile-picture/aniket-card-back.png"
-                imageFit="cover"
-                lanyardWidth={1.35}
-              />
+              {loadLanyard ? (
+                <Lanyard
+                  position={[0, 0, 22]}
+                  gravity={[0, -40, 0]}
+                  fov={20}
+                  frontImage="/profile-picture/aniket-card-front4.png"
+                  backImage="/profile-picture/aniket-card-back.png"
+                  imageFit="cover"
+                  lanyardWidth={1.35}
+                />
+              ) : (
+                <div className="w-full h-[520px] flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full border-2 border-accent/40 border-t-accent animate-spin" />
+                </div>
+              )}
             </div>
           </motion.div>
         </div>
@@ -203,8 +229,21 @@ export default function Hero() {
         >
           <div className="md:col-span-5 flex flex-col justify-start gap-4">
             <p className="josefin-sans-1 text-base sm:text-lg font-body font-medium leading-relaxed text-foreground border-l-2 border-accent pl-4 py-1">
-              Building end-to-end systems across machine learning, embedded systems, and computational biology research.
+              Building end-to-end systems across machine learning, embedded systems, and computational research.
             </p>
+            <div className="pl-4 text-[11px] sm:text-xs font-body font-light leading-snug text-muted">
+              <h3 className="josefin-sans-2 text-[10px] uppercase tracking-[0.16em] text-accent-soft mb-1.5">
+                Key Focus Areas
+              </h3>
+              <ul className="josefin-sans-1 list-none pl-0 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2.5 whitespace-nowrap text-left text-[11px] sm:text-xs text-foreground/75">
+                <li className="flex items-center justify-start gap-2"><span className="font-bold text-accent-soft">-</span><span>Machine Learning &amp; Deep Learning</span></li>
+                <li className="flex items-center justify-start gap-2"><span className="font-bold text-accent-soft sm:translate-x-1">-</span><span>Software &amp; Backend Development</span></li>
+                <li className="flex items-center justify-start gap-2"><span className="font-bold text-accent-soft">-</span><span>Embedded Systems, IoT &amp; Hardware</span></li>
+                <li className="flex items-center justify-start gap-2"><span className="font-bold text-accent-soft sm:translate-x-1">-</span><span>RF / SDR &amp; Signal Processing</span></li>
+                <li className="flex items-center justify-start gap-2"><span className="font-bold text-accent-soft">-</span><span>Computer Vision &amp; Medical Imaging</span></li>
+                <li className="flex items-center justify-start gap-2"><span className="font-bold text-accent-soft sm:translate-x-1">-</span><span>Computational Biology</span></li>
+              </ul>
+            </div>
           </div>
 
           <div className="md:col-span-7 flex flex-col gap-4 text-muted font-body font-light text-sm sm:text-base leading-relaxed">
@@ -212,7 +251,7 @@ export default function Hero() {
               My work ranges from Wi-Fi RSSI fingerprinting for indoor localization to multi-scale digital twin simulations, machine learning, and edge-optimized medical imaging pipelines.
             </p>
             <p className="josefin-sans-1">
-              Whether training neural models on RF signals, developing ML systems, simulating cortical sleep dynamics with VCell, or integrating microcontrollers with biometric sensors, I focus on taking ideas from research to complete, reliable, end-to-end systems that work in the real world.
+              Whether training neural models on RF signals, developing ML systems, building backend applications, working with embedded hardware, analyzing medical images, or simulating biological systems with VCell, I focus on taking ideas from research to complete, reliable systems that work in the real world.
             </p>
           </div>
         </motion.div>

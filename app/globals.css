@@ -176,6 +176,57 @@ body {
   border-radius: 9999px;
 }
 
+.certificates-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: certificates-marquee 72s linear infinite;
+  will-change: transform;
+}
+
+.certificates-marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  gap: 1.25rem;
+  padding: 0 0.625rem;
+}
+
+.certificate-card-glow {
+  box-shadow:
+    0 14px 38px -22px rgba(139, 92, 246, 0.78),
+    0 0 22px -14px rgba(185, 166, 240, 0.46),
+    0 0 0 1px rgba(185, 166, 240, 0.06);
+}
+
+.certificate-card-glow:hover {
+  border-color: rgba(139, 92, 246, 0.55);
+  box-shadow:
+    0 20px 46px -22px rgba(139, 92, 246, 0.86),
+    0 0 32px -14px rgba(185, 166, 240, 0.68);
+}
+
+@keyframes certificates-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@media (min-width: 640px) {
+  .certificates-marquee-group {
+    gap: 1.5rem;
+    padding-inline: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .certificates-marquee-track {
+    animation: none;
+  }
+
+  .certificates-marquee-viewport {
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+}
+
 /* Shared hover: subtle lift + accent border (apply with group-hover where needed) */
 .surface-hover {
   transition:
