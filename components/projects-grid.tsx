@@ -338,7 +338,7 @@ export default function ProjectsGrid() {
           <button
             type="button"
             onClick={() => setShowAll((prev) => !prev)}
-            className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-xl border border-white/[0.15] bg-[#0B0616]/90 hover:border-accent/60 hover:bg-[#13092A] text-xs sm:text-[13px] font-body font-medium text-foreground transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.6)] cursor-pointer"
+            className="group inline-flex items-center gap-3 px-7 py-3.5 rounded-xl border border-white/[0.15] bg-[#0B0616]/90 hover:border-accent/70 hover:bg-[#13092A] text-xs sm:text-[13px] font-body font-medium text-foreground transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.6)] hover:shadow-[0_0_34px_rgba(139,92,246,0.5),0_10px_34px_rgba(0,0,0,0.65)] cursor-pointer"
           >
             <span>{showAll ? "Show Less" : "View All Projects"}</span>
             <ChevronDown

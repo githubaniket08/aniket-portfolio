@@ -177,7 +177,7 @@ export default function Hero() {
                   position={[0, 0, 22]}
                   gravity={[0, -40, 0]}
                   fov={20}
-                  frontImage="/profile-picture/aniket-card-front4.png"
+                  frontImage="/profile-picture/aniket-card-front2.png"
                   backImage="/profile-picture/aniket-card-back.png"
                   imageFit="cover"
                   lanyardWidth={1.35}
